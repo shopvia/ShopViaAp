@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shopvia/Constants.dart';
 import 'package:shopvia/components/roundButton.dart';
-import 'package:shopvia/screens/homepage_screen.dart';
+import 'package:shopvia/home_page.dart';
 import 'package:shopvia/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.cyan,
         title: Text('ShopVia'),
@@ -55,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
               onpress: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomePageScreen()),
-            );
+              MaterialPageRoute(builder: (context) => MyHomePage(),
+            ));
               },
               title: 'Login',
               colour: Colors.lightBlueAccent,

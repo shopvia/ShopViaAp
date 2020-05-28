@@ -16,8 +16,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        title: Text('Shop Via'),
-        backgroundColor: Colors.redAccent,
+        title: Text('ShopVia'),
+        backgroundColor: Colors.cyan,
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 20, left: 10, right: 10),

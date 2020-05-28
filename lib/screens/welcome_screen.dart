@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopvia/components/roundButton.dart';
-import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 import 'package:shopvia/screens/registration_screen.dart';
 

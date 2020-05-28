@@ -18,7 +18,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         backgroundColor: Colors.cyan,
         title: Text('ShopVia'),
       ),
-      backgroundColor: Colors.blueGrey[50],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
        
         child: Padding(

@@ -15,15 +15,15 @@ class _DrawercontentState extends State<Drawercontent> {
           //header
           UserAccountsDrawerHeader(
             accountName: Text('Your Account'),
-            accountEmail: Text('santosh55@gmail.com'),
+            accountEmail: Text('asmitaneupane718@gmail.com'),
             currentAccountPicture: GestureDetector(
               child: CircleAvatar(
-                backgroundColor: Colors.grey,
-                child: Icon(Icons.person, color: Colors.white),
+                backgroundColor: Colors.white,
+                child: Icon(Icons.person, color: Colors.black),
               ),
             ),
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Colors.teal[500],
             ),
           ),
           //body
