@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
+import 'package:shopvia/screens/productlist_screen.dart';
 
 class Drawercontent extends StatefulWidget {
   @override
@@ -56,7 +57,7 @@ class _DrawercontentState extends State<Drawercontent> {
           ),
           InkWell(
             onTap: () {
-              print('pressed');
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>ProductList()));
             },
             child: ListTile(
               title: Text('Categories'),
@@ -66,7 +67,7 @@ class _DrawercontentState extends State<Drawercontent> {
           InkWell(
             onTap: () {
               print('pressed');
-            },
+                     },
             child: ListTile(
               title: Text('Filter Price'),
               leading: Icon(Icons.filter),

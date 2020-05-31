@@ -27,10 +27,10 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 RoundedButton(
-                  title: "Login",
+                  title: "Registration",
                   colour: Colors.lightBlueAccent,
                   onpress: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()),
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationScreen()),
             );
                     //for developing purpose   
                     // Navigator.pushNamed(context, Login_screen.id);
@@ -38,10 +38,10 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
                 ),
                 SizedBox(height: 4),
                 RoundedButton(
-                  title: "Registration",
+                  title: "Login",
                   colour: Colors.lightBlueAccent,
                   onpress: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationScreen())
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen())
                     );
                   },
                 ),

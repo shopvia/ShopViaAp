@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:shopvia/screens/productlist_screen.dart';
 import 'package:shopvia/screens/welcome_screen.dart';
 
 void main() => runApp(ShopVia());
@@ -12,6 +13,7 @@ class ShopVia extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFDBDFF4),
       ),
       home: WelecomeScreen(),
+      // home: ProductList(),
     );
   }
 }
