@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
+import 'package:shopvia/screens/login_screen.dart';
 import 'package:shopvia/screens/productlist_screen.dart';
 
 class Drawercontent extends StatefulWidget {
@@ -90,6 +91,18 @@ class _DrawercontentState extends State<Drawercontent> {
             child: ListTile(
               title: Text('About'),
               leading: Icon(Icons.help),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginScreen(),
+            ));
+            },
+            child: ListTile(
+              title: Text('Logout'),
+              leading: Icon(Icons.verified_user),
             ),
           ),
         ],

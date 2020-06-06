@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Sun May 31 08:29:01 NPT 2020
-=======
-#Tue May 26 13:56:44 NPT 2020
->>>>>>> 22385ddc6ce9c637396566e3600f137ebc136c38
+#Sat Jun 06 15:23:59 NPT 2020
 base.0=/home/asmita/projects/ShopVia/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
