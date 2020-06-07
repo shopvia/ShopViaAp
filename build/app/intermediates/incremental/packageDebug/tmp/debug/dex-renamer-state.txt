@@ -1,4 +1,4 @@
-#Sat Jun 06 15:23:59 NPT 2020
-base.0=/home/asmita/projects/ShopVia/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Sun Jun 07 23:55:46 NPT 2020
+base.0=/home/sushil/projects/ShopViaApp/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

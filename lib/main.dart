@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopvia/screens/product_search_list.dart';
-// import 'package:shopvia/screens/productlist_screen.dart';
-// import 'package:shopvia/screens/welcome_screen.dart';
+import 'package:shopvia/screens/homepage_screen.dart';
+import 'package:shopvia/screens/login_screen.dart';
 
 void main() => runApp(ShopVia());
 
@@ -13,8 +12,8 @@ class ShopVia extends StatelessWidget {
         primaryColor: Color(0xFFDBDFF4),
         scaffoldBackgroundColor: Color(0xFFDBDFF4),
       ),
-      home: DynamicApp(),
-      // home: ProductList(),
-    );
+      home: (1>2)?HomePageScreen():LoginScreen()
+      
+      );
   }
 }

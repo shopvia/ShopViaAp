@@ -2,40 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:shopvia/screens/DrawerContent_screen.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-Future getProducts() async {
-  final response = await http.get('https://jsonplaceholder.typicode.com/posts');
+// Future getProducts() async {
+//   final response = await http.get('https://jsonplaceholder.typicode.com/posts');
+//   if (response.statusCode == 200) {
+//     return (json.decode(response.body));
+//   } else {
+//     throw Exception(
+//         "Failed to fetch data from http://192.168.1.3:8000/api/?q=laptops");
+//   }
+// }
+Future getList() async {
+  final response = await http.get('http://192.168.254.5:8000/api/products/?q=laptops');
   if (response.statusCode == 200) {
+    print(json.decode(response.body));
     return (json.decode(response.body));
   } else {
     throw Exception(
-        "Failed to fetch data from http://192.168.1.3:8000/api/?q=laptops");
+        "Failed to fetch data from http://192.168.254.7:8000/api/products/?q=laptops");
   }
 }
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class ProductList extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: DynamicApp());
-  }
+  _ProductListState createState() => _ProductListState();
 }
 
-class DynamicApp extends StatefulWidget {
-  @override
-  _DynamicAppState createState() => _DynamicAppState();
-}
-
-class _DynamicAppState extends State<DynamicApp> {
- 
+class _ProductListState extends State<ProductList> {
+// final webView = FlutterWebviewPlugin();
   Future futureProducts;
   @override
   void initState() {
     super.initState();
-    futureProducts = getProducts();
+    // webView.close();
+    futureProducts = getList();
+  }
+
+  @override
+  void dispose() {
+    // webView.dispose();
+//    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -43,15 +51,13 @@ class _DynamicAppState extends State<DynamicApp> {
     return Scaffold(
         appBar: AppBar(title: Text('Product List')),
         drawer: Drawercontent(),
-        body: Column(children: [
+        body: Column(
+        
+          children: [
+            SizedBox(height:10),
           Flexible(
-              flex: 1,
-             
-              child: Container()),
-          Flexible(
-
-              //we need our futurelist here
-              flex: 12,
+           
+           flex: 12,
               child: FutureBuilder(
                   future: futureProducts,
                   builder: (context, snapshot) {
@@ -60,30 +66,105 @@ class _DynamicAppState extends State<DynamicApp> {
                           separatorBuilder: (context, index) {
                             return Divider(
                               thickness: 1,
+                              color: Colors.teal,
+                              // indent: 110,
+                              // endIndent: 120,
                             );
                           },
-                          // itemCount: snapshot.data['searchList'].length,
-                          itemCount: snapshot.data.length,
+                          itemCount: snapshot.data["searchResults"].length,
                           itemBuilder: (context, index) {
                             return ListTile(
-                                // leading: snapshot.data['searchList'][index]['imageLink']==null?Text('?'):Image.network(snapshot.data[index]['imageLink']),
-                                // title: snapshot.data['searchList'][index]['Name']==null?Text('No Name'):Text(snapshot.data[index]['Name']),
-                                // subtitle: snapshot.data['searchList'][index]['Price']==null?Text('0'):Text(snapshot.data[index]['Price']),
-                                // trailing:FlatButton(onPressed: (){}, child:Text('Buy')));}
                                 
+                                 leading:
+                                  Container(
+                                    height:800,
+                                    width:80,
+                                    decoration: BoxDecoration(
+                                      
+                                      // borderRadius: BorderRadius.circular(20),
+                                    color:Colors.white,
+                                    
+                                    ),
+                                    child:
+                                   Stack(
+                                     children: <Widget>[
+                                       Align(alignment: Alignment.center, child: Icon(Icons.image,color: Colors.grey,size:50)),
+                                       Image.network(  
+                                            snapshot.data['searchResults'][index]['imageLink'],
+                                            fit: BoxFit.cover,
+                                            
+                                            colorBlendMode: BlendMode.screen,
+                                            color: Colors.teal,
+                                            width:80.0,
+                                            loadingBuilder: (context,child,progress)
+                                            {
+                                              return progress==null?child:LinearProgressIndicator(backgroundColor:Colors.teal );
+                                              },
+                                              ),
+                                     ],
+                                   ),
+                                    
+                                  ),
                                 
-  //   "userId": 1,
-  //   "id": 1,
-  //   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  //   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  // },
+                                title: Text(snapshot.data['searchResults'][index]['Name'].toString().trim(),textAlign: TextAlign.justify,),                                // subtitle: snapshot.data['searchResults'][index]['Price']=="None"?Text('0'):Text(snapshot.data[index]['Price']),
+                                subtitle: 
+                                
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    SizedBox(height:10),
+                                    
+                            //         Divider(
+                            //   thickness: 1,
+                            //   color: Colors.teal,
+                            // ),
+                                    Text(snapshot.data['searchResults'][index]['Price'].toString().trim(),
+                                        style: TextStyle( fontSize:20,color:Colors.teal),),
+                                  ],
+                                ),
+                                
+                                trailing:FlatButton(
+                                  color: Colors.teal,
+                                  child:Text('View',textAlign: TextAlign.center,style: TextStyle(fontSize:16,color:Colors.white),),
+                                  onPressed: (){
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder:(context)=>MaterialApp(
+                                        home: Scaffold(
+                                          appBar: AppBar(
+                                            title:
+                                            ListTile(
+                                              title:Text('Product Detail',style: TextStyle(color:Colors.white,fontSize:20),),
+                                              trailing: IconButton(icon:Icon(Icons.arrow_back),color:Colors.white, onPressed: () { 
+                                                  Navigator.of(context).pop();
+                                               },),
+                                            ),
+                                            ),
+                                            body:WebView(
+                                              initialUrl: snapshot.data['searchResults'][index]['Link'],
+                                            ),
+                                        ),
+                                      )
+                                      ));
 
-                                leading: Text(snapshot.data[index]['userId'].toString()),
-                                title: Text(snapshot.data[index]['title']),
-                                subtitle: Text(snapshot.data[index]['body']),
-                                trailing:FlatButton(onPressed: (){}, child:Text('Buy')));}
-                            
-                            
+                                                                       
+                                      // Navigator.of(context).pushNamed("/webview");
+                                    // print(snapshot.data['searchResults'][index]['Link'].toString());
+                                  }
+                                )
+                                );
+
+
+                                // leading: Text(index.toString()),
+                                // title: Text('No Name'),
+                                // subtitle:Text('0'),
+                                // trailing:FlatButton(onPressed: (){}, child:Text('Buy')));}
+
+                                // leading: Text(snapshot.data[index]['userId'].toString()),
+                                // title: Text(snapshot.data[index]['title']),
+                                // subtitle: Text(snapshot.data[index]['body']),
+                                // trailing:FlatButton(onPressed: (){}, child:Text('Buy')));  
+                          }
                           );
                     } else if (snapshot.hasError) {
                       return Center(

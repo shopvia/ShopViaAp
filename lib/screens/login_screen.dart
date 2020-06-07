@@ -6,7 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shopvia/Constants.dart';
 import 'package:shopvia/components/roundButton.dart';
-// import 'package:shopvia/home_page.dart';
+// import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/registration_screen.dart';
 
 // Future<LoginScreen> fetchUser() async{
@@ -28,7 +28,7 @@ Future<http.Response> login(String username,String password) async{
     'password':password
   };
   http.Response response = await http.post(
-    'http://192.168.1.2:8000/user/api/',
+    'http://192.168.254.5:8000/api/auth-token',
     headers: {HttpHeaders.contentTypeHeader: "application/json"},
     body:json.encode(credentials)
   );
@@ -54,76 +54,85 @@ final   TextEditingController _usernameController=new TextEditingController() ;
         backgroundColor: Colors.cyan,
         title: Text('ShopVia'),
         ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.topCenter,
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20),
-                      ),
-            ),
-            SizedBox(height: 50),
-            TextFormField(
-              controller: _usernameController,
-              textAlign: TextAlign.center,
-              decoration:
-                  kTextFieldDecoration.copyWith(hintText: 'Enter Your Email'),
-
-            ),
-            SizedBox(height: 8),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              textAlign: TextAlign.center,
-              decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter Your Password'),
-            ),
-            SizedBox(height: 48),
-            RoundedButton(
-              onpress: () {
-
-               this.setState(() {this.username=this._usernameController.text;});
-               this.setState(() {this.password=this._passwordController.text;});
-                print("Credentials:"+username+" "+password);
-               print(login(username,password));
-
-            //     Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => MyHomePage(),
-            // ));
-
-
-              },
-              title: 'Login',
-              colour: Colors.lightBlueAccent,
-            ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: 'Forget Password?',
-                  style: TextStyle(color:Colors.grey),
-    children: <TextSpan>[
-      TextSpan(text: 'Create An Account', style: TextStyle( fontWeight: FontWeight.bold,color: Colors.cyan),
-       recognizer: TapGestureRecognizer()
-          ..onTap = () {
-              print("Tapped Sign Up");
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));           // single tapped
-          },
-  
-      )],
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.topCenter,
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          'Sign In',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20),
+                        ),
               ),
-            )
-          ],
+              SizedBox(height: 50),
+              TextFormField(
+                controller: _usernameController,
+                textAlign: TextAlign.center,
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter Your Email'),
+
+              ),
+              SizedBox(height: 8),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                textAlign: TextAlign.center,
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter Your Password'),
+              ),
+              SizedBox(height: 48),
+              
+              Builder(
+                builder:(context) =>RoundedButton(
+                onpress: () async{
+
+                 this.setState(() {this.username=this._usernameController.text;});
+                 this.setState(() {this.password=this._passwordController.text;});
+                  print("Credentials:"+username+" "+password);
+                 var result=await login(username,password);
+                 print(result);
+                Scaffold.of(context).showSnackBar(SnackBar(content: Text('Are you talkin\' to me?')));
+                //  this.(context).showSnackBar(SnackBar(content: Text('asdasd')));
+              
+              //     Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => HomePageScreen(),
+              // ));
+
+
+                },
+                title: 'Login',
+                colour: Colors.lightBlueAccent,
+              ),
+              ),
+
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Forget Password?',
+                    style: TextStyle(color:Colors.grey),
+    children: <TextSpan>[
+        TextSpan(text: ' Create An Account', style: TextStyle( fontWeight: FontWeight.bold,color: Colors.cyan),
+         recognizer: TapGestureRecognizer()
+            ..onTap = () {
+                print("Tapped Sign Up");
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));           // single tapped
+            },
+  
+        )],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
