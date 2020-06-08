@@ -30,3 +30,6 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
+
+const API_URL='http://192.168.254.6';
+const PORT='8000';

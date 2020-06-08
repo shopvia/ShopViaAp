@@ -1,48 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shopvia/Constants.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:shopvia/screens/DrawerContent_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-// Future getProducts() async {
-//   final response = await http.get('https://jsonplaceholder.typicode.com/posts');
-//   if (response.statusCode == 200) {
-//     return (json.decode(response.body));
-//   } else {
-//     throw Exception(
-//         "Failed to fetch data from http://192.168.1.3:8000/api/?q=laptops");
-//   }
-// }
-Future getList() async {
-  final response = await http.get('http://192.168.254.5:8000/api/products/?q=laptops');
+Future getList(String query) async {
+  final response = await http.get(
+     API_URL+':'+PORT+'/api/products/?q='+query);
   if (response.statusCode == 200) {
     print(json.decode(response.body));
     return (json.decode(response.body));
   } else {
     throw Exception(
-        "Failed to fetch data from http://192.168.254.7:8000/api/products/?q=laptops");
+        "Failed to fetch data from /api/products/?q=itemname");
   }
 }
 class ProductList extends StatefulWidget {
+  String query;
+  ProductList(this.query);
   @override
-  _ProductListState createState() => _ProductListState();
+  _ProductListState createState() => _ProductListState(this.query);
+  // _ProductListState createState() => _ProductListState();
 }
 
 class _ProductListState extends State<ProductList> {
-// final webView = FlutterWebviewPlugin();
   Future futureProducts;
+  String query;
+  _ProductListState(this.query);
   @override
   void initState() {
     super.initState();
-    // webView.close();
-    futureProducts = getList();
+    futureProducts = getList(this.query);
   }
 
   @override
   void dispose() {
-    // webView.dispose();
-//    controller.dispose();
     super.dispose();
   }
 
@@ -52,7 +46,6 @@ class _ProductListState extends State<ProductList> {
         appBar: AppBar(title: Text('Product List')),
         drawer: Drawercontent(),
         body: Column(
-        
           children: [
             SizedBox(height:10),
           Flexible(
@@ -67,21 +60,16 @@ class _ProductListState extends State<ProductList> {
                             return Divider(
                               thickness: 1,
                               color: Colors.teal,
-                              // indent: 110,
-                              // endIndent: 120,
                             );
                           },
                           itemCount: snapshot.data["searchResults"].length,
                           itemBuilder: (context, index) {
                             return ListTile(
-                                
                                  leading:
                                   Container(
                                     height:800,
                                     width:80,
                                     decoration: BoxDecoration(
-                                      
-                                      // borderRadius: BorderRadius.circular(20),
                                     color:Colors.white,
                                     
                                     ),
@@ -113,12 +101,7 @@ class _ProductListState extends State<ProductList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     SizedBox(height:10),
-                                    
-                            //         Divider(
-                            //   thickness: 1,
-                            //   color: Colors.teal,
-                            // ),
-                                    Text(snapshot.data['searchResults'][index]['Price'].toString().trim(),
+                                         Text(snapshot.data['searchResults'][index]['Price'].toString().trim(),
                                         style: TextStyle( fontSize:20,color:Colors.teal),),
                                   ],
                                 ),
@@ -135,7 +118,7 @@ class _ProductListState extends State<ProductList> {
                                             title:
                                             ListTile(
                                               title:Text('Product Detail',style: TextStyle(color:Colors.white,fontSize:20),),
-                                              trailing: IconButton(icon:Icon(Icons.arrow_back),color:Colors.white, onPressed: () { 
+                                              leading: IconButton(icon:Icon(Icons.arrow_back),color:Colors.white, onPressed: () { 
                                                   Navigator.of(context).pop();
                                                },),
                                             ),
@@ -146,25 +129,15 @@ class _ProductListState extends State<ProductList> {
                                         ),
                                       )
                                       ));
-
-                                                                       
-                                      // Navigator.of(context).pushNamed("/webview");
-                                    // print(snapshot.data['searchResults'][index]['Link'].toString());
                                   }
                                 )
                                 );
-
 
                                 // leading: Text(index.toString()),
                                 // title: Text('No Name'),
                                 // subtitle:Text('0'),
                                 // trailing:FlatButton(onPressed: (){}, child:Text('Buy')));}
-
-                                // leading: Text(snapshot.data[index]['userId'].toString()),
-                                // title: Text(snapshot.data[index]['title']),
-                                // subtitle: Text(snapshot.data[index]['body']),
-                                // trailing:FlatButton(onPressed: (){}, child:Text('Buy')));  
-                          }
+                      }
                           );
                     } else if (snapshot.hasError) {
                       return Center(

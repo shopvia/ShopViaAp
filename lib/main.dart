@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 
-void main() => runApp(ShopVia());
+void main() async{
+  SharedPreferences.setMockInitialValues({});
+  Widget _show=LoginScreen();
 
-class ShopVia extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xFFDBDFF4),
-        scaffoldBackgroundColor: Color(0xFFDBDFF4),
-      ),
-      home: (1>2)?HomePageScreen():LoginScreen()
-      
-      );
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+  String result=await(prefs.getString('token'));
+  if(await result!=null)
+  {
+    _show=HomePageScreen();
   }
-}
+  
+    runApp(
+      MaterialApp(
+        theme: ThemeData(
+          primaryColor: Color(0xFFDBDFF4),
+          scaffoldBackgroundColor: Color(0xFFDBDFF4),
+        ),
+        home: _show 
+        )
+    );
+  }

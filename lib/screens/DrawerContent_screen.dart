@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
-import 'package:shopvia/screens/productlist_screen.dart';
+// import 'package:shopvia/screens/productlist_screen.dart';
 
 class Drawercontent extends StatefulWidget {
   @override
@@ -58,7 +59,7 @@ class _DrawercontentState extends State<Drawercontent> {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>ProductList()));
+              // Navigator.push(context, MaterialPageRoute(builder: (context) =>ProductList()));
             },
             child: ListTile(
               title: Text('Categories'),
@@ -94,11 +95,23 @@ class _DrawercontentState extends State<Drawercontent> {
             ),
           ),
           InkWell(
-            onTap: () {
-              Navigator.push(
+            onTap: () async{
+              SharedPreferences prefs=await SharedPreferences.getInstance();
+              String token=await prefs.getString('token');
+            
+
+             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Clearing Everything')));
+           prefs.clear();
+
+            
+
+            
+              Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen(),
+
             ));
+           
             },
             child: ListTile(
               title: Text('Logout'),
