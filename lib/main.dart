@@ -4,12 +4,12 @@ import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 
 void main() async{
-  SharedPreferences.setMockInitialValues({});
+  SharedPreferences.setMockInitialValues({'loggedIn':false});
   Widget _show=LoginScreen();
 
   SharedPreferences prefs=await SharedPreferences.getInstance();
-  String result=await(prefs.getString('token'));
-  if(await result!=null)
+  String result=prefs.getString('token');
+  if(result!=null)
   {
     _show=HomePageScreen();
   }

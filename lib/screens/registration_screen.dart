@@ -32,9 +32,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
 bool _autovalidate=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   String firstname,lastname,email,password;
-
   TextEditingController firstnamecontroller=new TextEditingController();
   TextEditingController lastnamecontroller=new TextEditingController();
   TextEditingController emailcontroller=new TextEditingController();
@@ -52,6 +50,8 @@ bool _autovalidate=false;
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: Form(
+
+          autovalidate: _autovalidate,
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

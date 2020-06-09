@@ -1,15 +1,56 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopvia/screens/EditUserScreen.dart';
+import 'package:shopvia/screens/aboutscreen.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
-// import 'package:shopvia/screens/productlist_screen.dart';
+
+getUsername() async{
+  String username='';
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+    String firstname=prefs.getString('first_name') ?? 'No First Name';
+    String lastname=prefs.getString('last_name') ?? 'No Last Name';
+    username=firstname+' '+lastname;
+    // username=prefs.getString('token') ?? 'No Token';
+    return username;
+}
+getEmail() async{
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+    String email=prefs.getString('email') ?? 'No email';
+    return email;
+}
 
 class Drawercontent extends StatefulWidget {
   @override
   _DrawercontentState createState() => _DrawercontentState();
 }
-
 class _DrawercontentState extends State<Drawercontent> {
+  String username;
+  String email;
+
+  @override
+  void initState() {
+
+getUsername().then((result)
+{
+ setState(() {
+      username=result;
+    });
+});
+getEmail().then((result)
+{
+ setState(() {
+      email=result;
+    });
+});
+
+    super.initState();
+
+   
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,8 +58,10 @@ class _DrawercontentState extends State<Drawercontent> {
         children: <Widget>[
           //header
           UserAccountsDrawerHeader(
-            accountName: Text('Your Account'),
-            accountEmail: Text('asmitaneupane718@gmail.com'),
+            arrowColor: Colors.deepPurpleAccent,
+            // accountName: Text('sdasd'),
+            accountName: Text(username??'User Name'),
+            accountEmail: Text(email?? 'Email'),
             currentAccountPicture: GestureDetector(
               child: CircleAvatar(
                 backgroundColor: Colors.white,
@@ -30,87 +73,95 @@ class _DrawercontentState extends State<Drawercontent> {
             ),
           ),
           //body
+          // InkWell(
+          //   onTap: () {
+          //      Navigator.pushNamed(context, HomePageScreen.id);
+          //   },
+          //   child: ListTile(
+          //     title: Text('Home'),
+          //     leading: Icon(Icons.home),
+          //   ),
+          // ),
+
           InkWell(
             onTap: () {
-               Navigator.pushNamed(context, HomePageScreen.id);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditUser())).then((__) {
+                initState();
+              });
             },
             child: ListTile(
-              title: Text('Home'),
-              leading: Icon(Icons.home),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              print('pressed');
-            },
-            child: ListTile(
-              title: Text('My account'),
+              title: Text('Edit account'),
               leading: Icon(Icons.person),
             ),
           ),
+         
+         
+          // InkWell(
+          //   onTap: () {
+          //     print('pressed');
+          //   },
+          //   child: ListTile(
+          //     title: Text('My oder'),
+          //     leading: Icon(Icons.shopping_basket),
+          //   ),
+          // ),
+          // InkWell(
+          //   onTap: () {
+          //   },
+          //   child: ListTile(
+          //     title: Text('Categories'),
+          //     leading: Icon(Icons.dashboard),
+          //   ),
+          // ),
+          // InkWell(
+          //   onTap: () {
+          //     print('pressed');
+          //            },
+          //   child: ListTile(
+          //     title: Text('Filter Price'),
+          //     leading: Icon(Icons.filter),
+          //   ),
+          // ),
+
+
+          // Divider(color: Colors.black),
+          // InkWell(
+          //   onTap: () {
+          //     print('pressed');
+          //   },
+          //   child: ListTile(
+          //     title: Text('Setting'),
+          //     leading: Icon(Icons.settings),
+          //   ),
+          // ),
+
           InkWell(
             onTap: () {
-              print('pressed');
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AboutScreen()));
             },
             child: ListTile(
-              title: Text('My oder'),
-              leading: Icon(Icons.shopping_basket),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) =>ProductList()));
-            },
-            child: ListTile(
-              title: Text('Categories'),
-              leading: Icon(Icons.dashboard),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              print('pressed');
-                     },
-            child: ListTile(
-              title: Text('Filter Price'),
-              leading: Icon(Icons.filter),
-            ),
-          ),
-          Divider(color: Colors.black),
-          InkWell(
-            onTap: () {
-              print('pressed');
-            },
-            child: ListTile(
-              title: Text('Setting'),
-              leading: Icon(Icons.settings),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              print('pressed');
-            },
-            child: ListTile(
-              title: Text('About'),
+              title: Text('About Us'),
               leading: Icon(Icons.help),
             ),
           ),
           InkWell(
             onTap: () async{
               SharedPreferences prefs=await SharedPreferences.getInstance();
-              String token=await prefs.getString('token');
-            
+              // String token=await prefs.getString('token').toString();
 
-             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Clearing Everything')));
+             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Logging Out Clearing Preferences')));
            prefs.clear();
-
-            
-
-            
-              Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => LoginScreen(),
-
-            ));
+  Timer(
+    Duration(seconds: 1), () {
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder:(context)=>LoginScreen()));
+    }
+    );     
+                      
+            //   Navigator.pushReplacement(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => LoginScreen(),
+            // ));
            
             },
             child: ListTile(

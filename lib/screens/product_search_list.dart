@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/Constants.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -7,8 +10,14 @@ import 'package:shopvia/screens/DrawerContent_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 Future getList(String query) async {
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+  String token=prefs.getString('token').toString();
+
   final response = await http.get(
-     API_URL+':'+PORT+'/api/products/?q='+query);
+     API_URL+':'+PORT+'/api/products/?q='+query,
+     headers: {HttpHeaders.authorizationHeader:"Token "+token}
+     
+     );
   if (response.statusCode == 200) {
     print(json.decode(response.body));
     return (json.decode(response.body));
@@ -18,11 +27,10 @@ Future getList(String query) async {
   }
 }
 class ProductList extends StatefulWidget {
-  String query;
+  final String query;
   ProductList(this.query);
   @override
   _ProductListState createState() => _ProductListState(this.query);
-  // _ProductListState createState() => _ProductListState();
 }
 
 class _ProductListState extends State<ProductList> {

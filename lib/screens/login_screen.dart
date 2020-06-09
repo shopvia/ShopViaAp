@@ -19,10 +19,20 @@ Future<http.Response> login(String username,String password) async{
     API_URL+':'+PORT+'/api/auth-token',
     headers: {HttpHeaders.contentTypeHeader: "application/json"},
     body:json.encode(credentials)
-
     );
   return response;
 }
+
+getUserDetail() async{
+SharedPreferences prefs=await SharedPreferences.getInstance();
+  String token=prefs.getString('token').toString();
+  http.Response response = await http.get(
+    API_URL+':'+PORT+'/user/api/',
+     headers: {HttpHeaders.authorizationHeader:"Token "+token}
+    );
+  return response;
+}
+
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -112,36 +122,43 @@ final   TextEditingController _usernameController=new TextEditingController() ;
                     { 
                       _formKey.currentState.save();
                       print("Credentials:"+this.username+" "+this.password);
-                      var result=await login(username,password);
-                      print(json.decode(result.body).toString());
-
-                      if((json.decode(result.body)['token']!=null))
+                      var loginresult=await login(username,password);
+                     
+                      if((json.decode(loginresult.body)['token']!=null))
                           {
-                            
-                              
                             final prefs=await SharedPreferences.getInstance();
-                            await prefs.setString('token', json.decode(result.body)['token']);
-                            print("Token is: "+prefs.getString('token'));
+                             prefs.setString('token', json.decode(loginresult.body)['token']);
+
+                              var userdetail=await getUserDetail();
+                              print("User Detail"+json.decode(userdetail.body).toString());
+
+                             prefs.setString('first_name', json.decode(userdetail.body)[0]['first_name']);
+                             prefs.setString('last_name', json.decode(userdetail.body)[0]['last_name']);
+                             prefs.setString('email', json.decode(userdetail.body)[0]['email']);
+                             prefs.setString('id', json.decode(userdetail.body)[0]['id'].toString());
+
+                            print("*******************");
+                            print("Shared Preferences");
+                            print("*******************");
+                            print("Token: "+prefs.getString('token'));
+                            print("First Name is: "+prefs.getString('first_name')??' ');
+                            print("Last Name: "+prefs.getString('last_name')??' ');
+                            print("Email: "+prefs.getString('email'));
+                            print("Id: "+prefs.getString('id'));
+                            print("*******************"); 
+
                             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Logged In Successfully => Taking you to HomePage')));
-                                                    Timer(Duration(seconds: 1), () {
-  Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>HomePageScreen()));
-    });                                                }       
+                             
+                              Timer(Duration(seconds: 1), () {
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder:(context)=>HomePageScreen()));
+    });                     }       
                         else
                           Scaffold.of(context).showSnackBar(SnackBar(content: Text('Invalid Login Credentials')));
                     }
                     else{
                     this.setState(() {_autovalidate=true;});
                     }
-                    // print("Credentials:"+this.username+" "+this.password);
-                   
-                  // Scaffold.of(context).showSnackBar(SnackBar(content: Text('Are you talkin\' to me?')));
-                  //  this.(context).showSnackBar(SnackBar(content: Text('asdasd')));
-                
-                //     Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => HomePageScreen(),
-                // ));
-
 
                   },
                   title: 'Login',

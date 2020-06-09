@@ -12,7 +12,7 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-bool _autovalidate=false;
+  bool _autovalidate=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String query;
   @override
@@ -32,6 +32,7 @@ bool _autovalidate=false;
               child: Padding(
                 padding: EdgeInsets.only(top: 15, left: 10, right: 10),
                 child: Form(
+                  autovalidate: _autovalidate,
                   key:_formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
