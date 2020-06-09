@@ -150,7 +150,6 @@ class _EditUserState extends State<EditUser> {
                             final prefs=await SharedPreferences.getInstance();
                              prefs.setString('first_name', json.decode(result.body)['first_name']);
                              prefs.setString('last_name', json.decode(result.body)['last_name']);
-                            
                           }       
                         else
                           Scaffold.of(context).showSnackBar(SnackBar(content: Text('Could Not Edit User'+json.decode(result.body).toString())));
