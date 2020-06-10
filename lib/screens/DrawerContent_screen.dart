@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/screens/EditUserScreen.dart';
 import 'package:shopvia/screens/aboutscreen.dart';
-import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 
 getUsername() async{
@@ -157,11 +156,6 @@ getEmail().then((result)
     MaterialPageRoute(builder:(context)=>LoginScreen()));
     }
     );     
-                      
-            //   Navigator.pushReplacement(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => LoginScreen(),
-            // ));
            
             },
             child: ListTile(
@@ -169,6 +163,30 @@ getEmail().then((result)
               leading: Icon(Icons.verified_user),
             ),
           ),
+          
+
+  //                InkWell(
+  //           onTap: () async{
+  //             // SharedPreferences prefs=await SharedPreferences.getInstance();
+  //             // String token=await prefs.getString('token').toString();
+
+  //            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Going to Login Without Clearing Preferences')));
+  //         //  prefs.clear();
+  // Timer(
+  //   Duration(seconds: 1), () {
+  // Navigator.of(context).pushReplacement(
+  //   MaterialPageRoute(builder:(context)=>LoginScreen()));
+  //   }
+  //   );     
+           
+  //           },
+  //           child: ListTile(
+  //             title: Text('Go to Login'),
+  //             leading: Icon(Icons.verified_user),
+  //           ),
+  //         ),
+
+
         ],
       ),
     );

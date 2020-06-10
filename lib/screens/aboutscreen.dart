@@ -10,50 +10,60 @@ class AboutScreen extends StatelessWidget {
         title: Text('About Us',style: TextStyle(color:Colors.white),),
         ),
          body: SingleChildScrollView(
-           child: Column(
-             children: <Widget>[
-               
-               UserAccountsDrawerHeader(
-  
-            accountName: Text('Asmita Neupane'),
-            accountEmail: Text('neupaneashmita2056@gmail.com'),
-            currentAccountPicture: GestureDetector(
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                child:Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg')
+           child: Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: <Widget>[
+                 Text("Team Lead",textAlign: TextAlign.start,style: TextStyle(fontSize:24,fontWeight:FontWeight.bold),),
+                ListTile(
+
+                  // leading:Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg'),
+                  leading:Image.asset('lib/assets/asmita.jpg'),title: Text('Asmita Neupane'),
+                  subtitle: Text('neupane.ashmita2056@gmail.com'),
+                  trailing: Icon(Icons.person),
                 ),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.teal[100],
-            ),
-          ),
+SizedBox(height: 20,),
+                 Text("Developers",textAlign: TextAlign.start,style: TextStyle(fontSize:24,fontWeight:FontWeight.bold),),
+                ListTile(
 
-ListTile(
-  leading:Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg'),
-  title: Text('Asmita Neupane'),
-  subtitle: Text('neupane.ashmita2056@gmail.com'),
-),
+                  // leading:Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg'),
+                  leading:Image.asset('lib/assets/santosh.jpg'),
 
-          SizedBox(
-            height: 100,
-            child: Hero(
-        tag: 'Asmita',
-        child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: (){
+                  title: Text('Santosh Chapagain'),
+                  subtitle: Text('neupane.ashmita2056@gmail.com'),
+                  trailing: Icon(Icons.person_outline),
+                ),
+                                ListTile(
 
-              },
-              child: Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg',
-                fit: BoxFit.contain,
-              ),
-            ),
-        ),
-            ),
-          )
+                  // leading:Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg'),
+                 leading:Image.asset('lib/assets/prashant.jpg'),
+                  title: Text('Prashant Bagale'),
+                  subtitle: Text('neupane.ashmita2056@gmail.com'),
+                  trailing: Icon(Icons.person_outline),
+                ),
+
+        //   SizedBox(
+        //       height: 100,
+        //       child: Hero(
+        // tag: 'Asmita',
+        // child: Material(
+        //       color: Colors.transparent,
+        //       child: InkWell(
+        //         onTap: (){
+
+        //         },
+        //         child: Image.network('https://astranix.com/wp-content/uploads/2020/03/asmita-photo.jpg',
+        //           fit: BoxFit.contain,
+        //         ),
+        //       ),
+        // ),
+        //       ),
+        //   )
 
 
-             ],
+               ],
+             ),
            ),
          )
       

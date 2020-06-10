@@ -10,6 +10,13 @@ import 'package:shopvia/components/roundButton.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/registration_screen.dart';
 
+
+// getToken() async{
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//     String token=prefs.getString('first_name') ?? 'No Token';
+//     return token;
+// }
+
 Future<http.Response> login(String username,String password) async{
   var credentials={
     'username': username,
@@ -42,10 +49,25 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   String username, password;
+  String token='asd';
   bool _autovalidate=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 final   TextEditingController _usernameController=new TextEditingController() ;
  final TextEditingController _passwordController=new TextEditingController();
+
+   @override
+  void initState() {
+
+// getToken().then((result)
+// {
+//  setState(() {
+//       token=result;
+//     });
+// });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/Constants.dart';
 import 'package:shopvia/components/roundButton.dart';
 import 'package:shopvia/screens/DrawerContent_screen.dart';
+import 'package:shopvia/screens/login_screen.dart';
 import 'package:shopvia/screens/product_search_list.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -11,10 +13,27 @@ class HomePageScreen extends StatefulWidget {
   _HomePageScreenState createState() => _HomePageScreenState();
 }
 
+isLoggedIn() async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token=prefs.getString('token');
+  return token;
+}
+
 class _HomePageScreenState extends State<HomePageScreen> {
+  
   bool _autovalidate=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String query;
+  @override
+  void initState() {
+    super.initState();
+    isLoggedIn().then((result){
+      if(result==null)
+      {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>LoginScreen()));
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

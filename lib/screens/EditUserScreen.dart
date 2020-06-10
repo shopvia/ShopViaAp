@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +7,6 @@ import 'package:shopvia/components/roundButton.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:http/http.dart' as http;
-import 'package:shopvia/screens/login_screen.dart';
 
 Future<http.Response> editUser(String firstname,String lastname) async{
    SharedPreferences prefs=await SharedPreferences.getInstance();
