@@ -11000,5 +11000,6 @@ public final class R {
   }
   public static final class xml {
     public static final int filepaths=0x7f0f0000;
+    public static final int shared_file_paths=0x7f0f0001;
   }
 }

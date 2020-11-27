@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sushil/projects/ShopViaApp/build/flutter_webview_plugin/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn.xml",
+            "outputFile": "/home/sushil/Projects/asmita/ShopViaApp/build/flutter_webview_plugin/intermediates/res/merged/debug/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/home/sushil/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/res/values-bn/values-bn.xml",
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "outputFile": "/home/sushil/projects/ShopViaApp/build/flutter_webview_plugin/intermediates/res/merged/debug/values-bn/values-bn.xml",
+            "outputFile": "/home/sushil/Projects/asmita/ShopViaApp/build/flutter_webview_plugin/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/home/sushil/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/res/values-bn/values-bn.xml",

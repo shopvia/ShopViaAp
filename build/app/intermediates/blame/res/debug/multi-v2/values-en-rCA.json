@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sushil/projects/ShopViaApp/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "/home/sushil/Projects/asmita/ShopViaApp/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
                     "source": "/home/sushil/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/res/values-en-rCA/values-en-rCA.xml",
