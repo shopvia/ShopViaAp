@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopvia/screens/EditUserScreen.dart';
 import 'package:shopvia/screens/aboutscreen.dart';
+import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 
 getUsername() async{
@@ -81,6 +82,17 @@ class _DrawercontentState extends State<Drawercontent> {
           //     leading: Icon(Icons.home),
           //   ),
           // ),
+InkWell(
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePageScreen())).then((__) {
+                initState();
+              });
+            },
+            child: ListTile(
+              title: Text('Home'),
+              leading: Icon(Icons.home),
+            ),
+          ),
 
           InkWell(
             onTap: () {

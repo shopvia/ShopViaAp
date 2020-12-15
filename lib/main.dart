@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shopvia/screens/welcome_screen.dart';
 // import 'package:shopvia/screens/login_screen.dart';
 
+
 void main() async{
 
   Widget _show=WelecomeScreen();
@@ -27,4 +28,5 @@ void main() async{
         home: _show 
         )
     );
+
   }

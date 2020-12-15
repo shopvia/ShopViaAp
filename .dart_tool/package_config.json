@@ -50,10 +50,28 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-0.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/file-5.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///home/asmita/projects/flutter/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "flutter_email_sender",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_email_sender-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "flutter_test",
@@ -75,7 +93,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.1",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
       "packageUri": "lib/",
       "languageVersion": "2.4"
     },
@@ -84,6 +102,24 @@
       "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "mailer",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/mailer-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "matcher",
@@ -98,26 +134,74 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "mime",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/mime-0.9.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "path",
       "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
     },
     {
-      "name": "pedantic",
-      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0",
+      "name": "path_provider_linux",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
     {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.24"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "process",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/process-3.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "shared_preferences",
-      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.7+3",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.12+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-0.0.2+4",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
     {
       "name": "shared_preferences_macos",
-      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+11",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
@@ -130,6 +214,12 @@
     {
       "name": "shared_preferences_web",
       "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_windows",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-0.0.1+3",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
@@ -189,9 +279,21 @@
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.22+1",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.24",
       "packageUri": "lib/",
       "languageVersion": "2.7"
+    },
+    {
+      "name": "win32",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-1.7.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "shopvia",
@@ -200,7 +302,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-12-15T12:07:04.536574Z",
+  "generated": "2020-12-15T12:55:53.907691Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

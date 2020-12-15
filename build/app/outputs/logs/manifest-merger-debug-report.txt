@@ -7,6 +7,7 @@ INJECTED from /home/asmita/projects/7th_project/ShopViaApp/android/app/src/main/
 MERGED from /home/asmita/projects/7th_project/ShopViaApp/android/app/src/main/AndroidManifest.xml:1:1-30:12
 MERGED from [:shared_preferences] /home/asmita/projects/7th_project/ShopViaApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-21:12
+MERGED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
 MERGED from [:webview_flutter] /home/asmita/projects/7th_project/ShopViaApp/build/webview_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/0986d0d74b8a2c7da8161f6370fc7744/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -50,6 +51,8 @@ application
 ADDED from /home/asmita/projects/7th_project/ShopViaApp/android/app/src/main/AndroidManifest.xml:8:5-29:19
 MERGED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-19:19
 MERGED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-19:19
+MERGED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
+MERGED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
 MERGED from [androidx.core:core:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/3a7eb299570065a3866b140e1a95969b/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
@@ -100,6 +103,8 @@ MERGED from [:shared_preferences] /home/asmita/projects/7th_project/ShopViaApp/b
 MERGED from [:shared_preferences] /home/asmita/projects/7th_project/ShopViaApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:6:5-44
 MERGED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:6:5-44
+MERGED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter] /home/asmita/projects/7th_project/ShopViaApp/build/webview_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter] /home/asmita/projects/7th_project/ShopViaApp/build/webview_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/asmita/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -174,3 +179,13 @@ ADDED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaAp
 		ADDED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-50
 	android:name
 		ADDED from [:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-67
+provider#com.sidlatau.flutteremailsender.FlutterEmailSenderFileProvider
+ADDED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-65
+	android:exported
+		ADDED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-90

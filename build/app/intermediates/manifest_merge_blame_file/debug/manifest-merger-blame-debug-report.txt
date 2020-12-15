@@ -85,6 +85,23 @@
 56                android:resource="@xml/filepaths" />
 56-->[:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-50
 57        </provider>
-58    </application>
-59
-60</manifest>
+58        <provider
+58-->[:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+59            android:name="com.sidlatau.flutteremailsender.FlutterEmailSenderFileProvider"
+59-->[:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-90
+60            android:authorities="com.shopvia.shopvia.file_provider"
+60-->[:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-65
+61            android:exported="false"
+61-->[:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+62            android:grantUriPermissions="true" >
+62-->[:flutter_email_sender] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+63            <meta-data
+63-->[:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-17:53
+64                android:name="android.support.FILE_PROVIDER_PATHS"
+64-->[:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-67
+65                android:resource="@xml/shared_file_paths" />
+65-->[:flutter_webview_plugin] /home/asmita/projects/7th_project/ShopViaApp/build/flutter_webview_plugin/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-50
+66        </provider>
+67    </application>
+68
+69</manifest>

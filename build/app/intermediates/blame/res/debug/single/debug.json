@@ -76,6 +76,10 @@
         "source": "/home/asmita/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
     },
     {
+        "merged": "/home/asmita/projects/7th_project/ShopViaApp/build/app/intermediates/res/merged/debug/xml_shared_file_paths.xml.flat",
+        "source": "/home/asmita/projects/7th_project/ShopViaApp/build/flutter_email_sender/intermediates/packaged_res/debug/xml/shared_file_paths.xml"
+    },
+    {
         "merged": "/home/asmita/projects/7th_project/ShopViaApp/build/app/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
         "source": "/home/asmita/.gradle/caches/transforms-2/files-2.1/7def8d6c3751559765cf68c2d5a2dddd/appcompat-1.1.0/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
