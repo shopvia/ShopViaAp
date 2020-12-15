@@ -32,20 +32,20 @@ class _DrawercontentState extends State<Drawercontent> {
   @override
   void initState() {
 
-getUsername().then((result)
-{
- setState(() {
-      username=result;
+    getUsername().then((result)
+    {
+    setState(() {
+          username=result;
+        });
     });
-});
-getEmail().then((result)
-{
- setState(() {
-      email=result;
+    getEmail().then((result)
+    {
+    setState(() {
+          email=result;
+        });
     });
-});
 
-    super.initState();
+        super.initState();
 
    
   }

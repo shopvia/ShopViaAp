@@ -26,8 +26,20 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+            //     Container(
+            //       child: new DecoratedBox(
+            //   decoration: new BoxDecoration(
+            //     image: new DecorationImage(
+            //       image: new AssetImage("lib/assets/background.jpeg"),
+            //       fit: BoxFit.fill,
+            //     ),
+            //   ),
+            // ),
+                  
+            //     ),
+                
                 RoundedButton(
-                  title: "Registration",
+                  title: "Sign Up",
                   colour: Colors.lightBlueAccent,
                   onpress: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegistrationScreen()),
@@ -45,6 +57,7 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
                     );
                   },
                 ),
+
               ],
             ),
           ),

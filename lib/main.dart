@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopvia/screens/homepage_screen.dart';
+import 'package:shopvia/screens/welcome_screen.dart';
 // import 'package:shopvia/screens/login_screen.dart';
 
 void main() async{
 
-  Widget _show=HomePageScreen();
+  Widget _show=WelecomeScreen();
 
   //Putthing this Logic at HomePage
   // SharedPreferences.setMockInitialValues({});

@@ -132,26 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         thickness: 3,
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(
-                    //       left: 10, top: 10, right: 10, bottom: 10),
-                    //   child: Container(
-                    //     padding: EdgeInsets.only(
-                    //         left: 100, top: 10, right: 0, bottom: 10),
-                    //     //  margin: EdgeInsets.all(10),
-                    //     height: 40,
-                    //     width: 10,
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       color: Colors.blue,
-                    //     ),
-                    //     child: Text(
-                    //       'Search Products',
-                    //       style: TextStyle(
-                    //           fontSize: 20, fontWeight: FontWeight.bold),
-                    //     ),
-                    //   ),
-                    // )
                     Padding(
                       padding: EdgeInsets.only(top: 20, left: 25, right: 25),
                       child: RoundedButton(

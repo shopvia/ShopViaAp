@@ -50,7 +50,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String username, password;
   String token='asd';
-  bool _autovalidate=false;
+  // bool _autovalidateMode=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 final   TextEditingController _usernameController=new TextEditingController() ;
  final TextEditingController _passwordController=new TextEditingController();
@@ -81,7 +81,7 @@ final   TextEditingController _usernameController=new TextEditingController() ;
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: Form(
             key: _formKey,
-            autovalidate: _autovalidate,
+            autovalidateMode: AutovalidateMode.always,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -179,7 +179,7 @@ final   TextEditingController _usernameController=new TextEditingController() ;
                           Scaffold.of(context).showSnackBar(SnackBar(content: Text('Invalid Login Credentials')));
                     }
                     else{
-                    this.setState(() {_autovalidate=true;});
+                    // this.setState(() {_autovalidateMode=true;});
                     }
 
                   },

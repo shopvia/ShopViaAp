@@ -1,6 +1,6 @@
 # This is a generated file; do not edit or check into version control.
-flutter_webview_plugin=/opt/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.11/
-shared_preferences=/opt/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.7+3/
-shared_preferences_macos=/opt/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10/
-shared_preferences_web=/opt/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7/
-webview_flutter=/opt/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.22+1/
+flutter_webview_plugin=/home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.3.11/
+shared_preferences=/home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.7+3/
+shared_preferences_macos=/home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10/
+shared_preferences_web=/home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7/
+webview_flutter=/home/asmita/projects/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.22+1/

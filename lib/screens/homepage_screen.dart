@@ -21,7 +21,7 @@ isLoggedIn() async{
 
 class _HomePageScreenState extends State<HomePageScreen> {
   
-  bool _autovalidate=false;
+  // bool _autovalidateMode=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String query;
   @override
@@ -51,7 +51,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               child: Padding(
                 padding: EdgeInsets.only(top: 15, left: 10, right: 10),
                 child: Form(
-                  autovalidate: _autovalidate,
+                  autovalidateMode: AutovalidateMode.always,
                   key:_formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,7 +69,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   },
                         decoration: kTextFieldDecoration.copyWith(
                           hintText: 'Search for product',
-                          prefix: Icon(Icons.search),
+                          prefix: Icon(Icons.search,color: Colors.black,),
                         ),
                       ),
                       Padding(
@@ -87,7 +87,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
        Navigator.of(context).push(MaterialPageRoute(builder:(context)=>ProductList(query)));
                       }
                     else{
-                    this.setState(() {_autovalidate=true;});
+                    // this.setState(() {_autovalidateMode=true;});
                     }
         
                           },
