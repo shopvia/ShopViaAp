@@ -13,13 +13,13 @@ Future<http.Response> editUser(String firstname, String lastname) async {
   String token = prefs.getString('token').toString();
   String id = prefs.getString('id').toString();
   var userdetail = {'first_name': firstname, 'last_name': lastname};
-  http.Response response =
-      await http.patch(API_URL + ':' + PORT + '/user/api/' + id + '/',
-          headers: {
-            HttpHeaders.contentTypeHeader: "application/json",
-            HttpHeaders.authorizationHeader: "Token " + token
-          },
-          body: json.encode(userdetail));
+  http.Response response = await http.patch(
+      Uri.parse(API_URL + ':' + PORT + '/user/api/' + id + '/'),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.authorizationHeader: "Token " + token
+      },
+      body: json.encode(userdetail));
   return response;
 }
 
@@ -141,7 +141,7 @@ class _EditUserState extends State<EditUser> {
                         print(json.decode(result.body).toString());
 
                         if ((json.decode(result.body)['id'] != null)) {
-                          Scaffold.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text('User Edited Successfully')));
                           final prefs = await SharedPreferences.getInstance();
                           prefs.setString('first_name',
@@ -149,7 +149,7 @@ class _EditUserState extends State<EditUser> {
                           prefs.setString('last_name',
                               json.decode(result.body)['last_name']);
                         } else
-                          Scaffold.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text('Could Not Edit User' +
                                   json.decode(result.body).toString())));
                       } else {

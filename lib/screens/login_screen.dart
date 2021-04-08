@@ -10,36 +10,29 @@ import 'package:shopvia/components/roundButton.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/registration_screen.dart';
 
-
 // getToken() async{
 //   SharedPreferences prefs = await SharedPreferences.getInstance();
 //     String token=prefs.getString('first_name') ?? 'No Token';
 //     return token;
 // }
 
-Future<http.Response> login(String username,String password) async{
-  var credentials={
-    'username': username,
-    'password':password
-  };
+Future<http.Response> login(String username, String password) async {
+  var credentials = {'username': username, 'password': password};
   http.Response response = await http.post(
-    API_URL+':'+PORT+'/api/auth-token',
-    headers: {HttpHeaders.contentTypeHeader: "application/json"},
-    body:json.encode(credentials)
-    );
+      Uri.parse(API_URL + ':' + PORT + '/api/auth-token'),
+      headers: {HttpHeaders.contentTypeHeader: "application/json"},
+      body: json.encode(credentials));
   return response;
 }
 
-getUserDetail() async{
-SharedPreferences prefs=await SharedPreferences.getInstance();
-  String token=prefs.getString('token').toString();
+getUserDetail() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token = prefs.getString('token').toString();
   http.Response response = await http.get(
-    API_URL+':'+PORT+'/user/api/',
-     headers: {HttpHeaders.authorizationHeader:"Token "+token}
-    );
+      Uri.parse(API_URL + ':' + PORT + '/user/api/'),
+      headers: {HttpHeaders.authorizationHeader: "Token " + token});
   return response;
 }
-
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -49,15 +42,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   String username, password;
-  String token='asd';
+  String token = 'asd';
   // bool _autovalidateMode=false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-final   TextEditingController _usernameController=new TextEditingController() ;
- final TextEditingController _passwordController=new TextEditingController();
+  final TextEditingController _usernameController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
 
-   @override
+  @override
   void initState() {
-
 // getToken().then((result)
 // {
 //  setState(() {
@@ -74,8 +66,11 @@ final   TextEditingController _usernameController=new TextEditingController() ;
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.cyan,
-        title: Text('ShopVia App',style: TextStyle(color:Colors.white),),
+        title: Text(
+          'ShopVia App',
+          style: TextStyle(color: Colors.white),
         ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
@@ -88,120 +83,140 @@ final   TextEditingController _usernameController=new TextEditingController() ;
               children: <Widget>[
                 Container(
                   alignment: Alignment.topCenter,
-                          padding: EdgeInsets.all(10),
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20),
-                          ),
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20),
+                  ),
                 ),
                 SizedBox(height: 50),
-
                 TextFormField(
                   controller: _usernameController,
                   textAlign: TextAlign.center,
-                  validator: (value){
-                    Pattern pattern=r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                    RegExp regExp=new RegExp(pattern);
-                    if(!regExp.hasMatch(value))
+                  validator: (value) {
+                    Pattern pattern =
+                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                    RegExp regExp = new RegExp(pattern);
+                    if (!regExp.hasMatch(value))
                       return 'Enter Valid Email';
-                    else  
+                    else
                       return null;
                   },
-       onSaved: (String val) {
-                      this.setState(() {username=val;});
+                  onSaved: (String val) {
+                    this.setState(() {
+                      username = val;
+                    });
                   },
                   keyboardType: TextInputType.emailAddress,
-                  decoration:
-                      kTextFieldDecoration.copyWith(hintText: 'Enter Your Email'),
-
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter Your Email'),
                 ),
                 SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
                   textAlign: TextAlign.center,
-                    validator: (value){
-                    if(value.length==0)
+                  validator: (value) {
+                    if (value.length == 0)
                       return 'Enter Your Password';
-                    else  
+                    else
                       return null;
                   },
                   onSaved: (String val) {
-                      this.setState(() {password=val;});
+                    this.setState(() {
+                      password = val;
+                    });
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Enter Your Password'),
                 ),
                 SizedBox(height: 40),
-                
                 Builder(
-                  builder:(context) =>RoundedButton(
-                  onpress: () async{
-                    if(_formKey.currentState.validate())
-                    { 
-                      _formKey.currentState.save();
-                      print("Credentials:"+this.username+" "+this.password);
-                      var loginresult=await login(username,password);
-                     
-                      if((json.decode(loginresult.body)['token']!=null))
-                          {
-                            final prefs=await SharedPreferences.getInstance();
-                             prefs.setString('token', json.decode(loginresult.body)['token']);
+                  builder: (context) => RoundedButton(
+                    onpress: () async {
+                      if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
+                        print("Credentials:" +
+                            this.username +
+                            " " +
+                            this.password);
+                        var loginresult = await login(username, password);
 
-                              var userdetail=await getUserDetail();
-                              print("User Detail"+json.decode(userdetail.body).toString());
+                        if ((json.decode(loginresult.body)['token'] != null)) {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString(
+                              'token', json.decode(loginresult.body)['token']);
 
-                             prefs.setString('first_name', json.decode(userdetail.body)[0]['first_name']);
-                             prefs.setString('last_name', json.decode(userdetail.body)[0]['last_name']);
-                             prefs.setString('email', json.decode(userdetail.body)[0]['email']);
-                             prefs.setString('id', json.decode(userdetail.body)[0]['id'].toString());
+                          var userdetail = await getUserDetail();
+                          print("User Detail" +
+                              json.decode(userdetail.body).toString());
 
-                            print("*******************");
-                            print("Shared Preferences");
-                            print("*******************");
-                            print("Token: "+prefs.getString('token'));
-                            print("First Name is: "+prefs.getString('first_name')??' ');
-                            print("Last Name: "+prefs.getString('last_name')??' ');
-                            print("Email: "+prefs.getString('email'));
-                            print("Id: "+prefs.getString('id'));
-                            print("*******************"); 
+                          prefs.setString('first_name',
+                              json.decode(userdetail.body)[0]['first_name']);
+                          prefs.setString('last_name',
+                              json.decode(userdetail.body)[0]['last_name']);
+                          prefs.setString('email',
+                              json.decode(userdetail.body)[0]['email']);
+                          prefs.setString('id',
+                              json.decode(userdetail.body)[0]['id'].toString());
 
-                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Logged In Successfully => Taking you to HomePage')));
-                             
-                              Timer(Duration(seconds: 1), () {
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(builder:(context)=>HomePageScreen()));
-    });                     }       
-                        else
-                          Scaffold.of(context).showSnackBar(SnackBar(content: Text('Invalid Login Credentials')));
-                    }
-                    else{
-                    // this.setState(() {_autovalidateMode=true;});
-                    }
+                          print("*******************");
+                          print("Shared Preferences");
+                          print("*******************");
+                          print("Token: " + prefs.getString('token'));
+                          print("First Name is: " +
+                                  prefs.getString('first_name') ??
+                              ' ');
+                          print("Last Name: " + prefs.getString('last_name') ??
+                              ' ');
+                          print("Email: " + prefs.getString('email'));
+                          print("Id: " + prefs.getString('id'));
+                          print("*******************");
 
-                  },
-                  title: 'Login',
-                  colour: Colors.lightBlueAccent,
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                  'Logged In Successfully => Taking you to HomePage')));
+
+                          Timer(Duration(seconds: 1), () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => HomePageScreen()));
+                          });
+                        } else
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Invalid Login Credentials')));
+                      } else {
+                        // this.setState(() {_autovalidateMode=true;});
+                      }
+                    },
+                    title: 'Login',
+                    colour: Colors.lightBlueAccent,
+                  ),
                 ),
-                ),
-
                 Center(
                   child: RichText(
                     text: TextSpan(
                       text: 'Dont Have an Account?',
-                      style: TextStyle(color:Colors.grey),
-    children: <TextSpan>[
-        TextSpan(text: ' Sign Up', style: TextStyle( fontWeight: FontWeight.bold,color: Colors.cyan),
-         recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                  print("Tapped Sign Up");
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));           // single tapped
-              },
-  
-        )],
+                      style: TextStyle(color: Colors.grey),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' Sign Up',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.cyan),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              print("Tapped Sign Up");
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RegistrationScreen())); // single tapped
+                            },
+                        )
+                      ],
                     ),
                   ),
                 )

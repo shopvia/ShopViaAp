@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'dart:async';
 
 Future getCategories() async {
-  final response = await http.get('http://127.0.0.1:8000/api/?q=laptops');
+  final response =
+      await http.get(Uri.parse("http://127.0.0.1:8000/api/?q=laptops"));
 
   if (response.statusCode == 200) {
     return (json.decode(response.body));
@@ -26,6 +27,7 @@ class _ProductListState extends State<ProductList> {
     super.initState();
     futureCategories = getCategories();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +38,15 @@ class _ProductListState extends State<ProductList> {
         centerTitle: true,
       ),
       body: Container(
-        child: GridView.count(
-          childAspectRatio:MediaQuery.of(context).size.width /
-              (MediaQuery.of(context).size.height),
-  primary: false,
-  padding: const EdgeInsets.all(20),
-  crossAxisSpacing: 10,
-  mainAxisSpacing: 10,
-  crossAxisCount: 2,
-  children: <Widget>[
-
-          
-        ]
-      )
-    ),
-);
+          child: GridView.count(
+              childAspectRatio: MediaQuery.of(context).size.width /
+                  (MediaQuery.of(context).size.height),
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              crossAxisCount: 2,
+              children: <Widget>[])),
+    );
   }
 }

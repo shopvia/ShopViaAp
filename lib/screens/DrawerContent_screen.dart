@@ -7,48 +7,45 @@ import 'package:shopvia/screens/aboutscreen.dart';
 import 'package:shopvia/screens/homepage_screen.dart';
 import 'package:shopvia/screens/login_screen.dart';
 
-getUsername() async{
-  String username='';
+getUsername() async {
+  String username = '';
   SharedPreferences prefs = await SharedPreferences.getInstance();
-    String firstname=prefs.getString('first_name') ?? 'No First Name';
-    String lastname=prefs.getString('last_name') ?? 'No Last Name';
-    username=firstname+' '+lastname;
-    // username=prefs.getString('token') ?? 'No Token';
-    return username;
+  String firstname = prefs.getString('first_name') ?? 'No First Name';
+  String lastname = prefs.getString('last_name') ?? 'No Last Name';
+  username = firstname + ' ' + lastname;
+  // username=prefs.getString('token') ?? 'No Token';
+  return username;
 }
-getEmail() async{
-   SharedPreferences prefs = await SharedPreferences.getInstance();
-    String email=prefs.getString('email') ?? 'No email';
-    return email;
+
+getEmail() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String email = prefs.getString('email') ?? 'No email';
+  return email;
 }
 
 class Drawercontent extends StatefulWidget {
   @override
   _DrawercontentState createState() => _DrawercontentState();
 }
+
 class _DrawercontentState extends State<Drawercontent> {
   String username;
   String email;
 
   @override
   void initState() {
-
-    getUsername().then((result)
-    {
-    setState(() {
-          username=result;
-        });
+    getUsername().then((result) {
+      setState(() {
+        username = result;
+      });
     });
-    getEmail().then((result)
-    {
-    setState(() {
-          email=result;
-        });
+    getEmail().then((result) {
+      setState(() {
+        email = result;
+      });
     });
 
-        super.initState();
-
-   
+    super.initState();
   }
 
   @override
@@ -60,8 +57,8 @@ class _DrawercontentState extends State<Drawercontent> {
           UserAccountsDrawerHeader(
             arrowColor: Colors.deepPurpleAccent,
             // accountName: Text('sdasd'),
-            accountName: Text(username??'User Name'),
-            accountEmail: Text(email?? 'Email'),
+            accountName: Text(username ?? 'User Name'),
+            accountEmail: Text(email ?? 'Email'),
             currentAccountPicture: GestureDetector(
               child: CircleAvatar(
                 backgroundColor: Colors.white,
@@ -82,9 +79,12 @@ class _DrawercontentState extends State<Drawercontent> {
           //     leading: Icon(Icons.home),
           //   ),
           // ),
-InkWell(
+          InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePageScreen())).then((__) {
+              Navigator.of(context)
+                  .pushReplacement(
+                      MaterialPageRoute(builder: (context) => HomePageScreen()))
+                  .then((__) {
                 initState();
               });
             },
@@ -96,7 +96,9 @@ InkWell(
 
           InkWell(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditUser())).then((__) {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => EditUser()))
+                  .then((__) {
                 initState();
               });
             },
@@ -105,8 +107,7 @@ InkWell(
               leading: Icon(Icons.person),
             ),
           ),
-         
-         
+
           // InkWell(
           //   onTap: () {
           //     print('pressed');
@@ -134,7 +135,6 @@ InkWell(
           //   ),
           // ),
 
-
           // Divider(color: Colors.black),
           // InkWell(
           //   onTap: () {
@@ -148,7 +148,8 @@ InkWell(
 
           InkWell(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AboutScreen()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => AboutScreen()));
             },
             child: ListTile(
               title: Text('About Us'),
@@ -156,49 +157,44 @@ InkWell(
             ),
           ),
           InkWell(
-            onTap: () async{
-              SharedPreferences prefs=await SharedPreferences.getInstance();
+            onTap: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
               // String token=await prefs.getString('token').toString();
 
-             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Logging Out Clearing Preferences')));
-           prefs.clear();
-  Timer(
-    Duration(seconds: 1), () {
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(builder:(context)=>LoginScreen()));
-    }
-    );     
-           
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Logging Out Clearing Preferences')));
+              prefs.clear();
+              Timer(Duration(seconds: 1), () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              });
             },
             child: ListTile(
               title: Text('Logout'),
               leading: Icon(Icons.verified_user),
             ),
           ),
-          
 
-  //                InkWell(
-  //           onTap: () async{
-  //             // SharedPreferences prefs=await SharedPreferences.getInstance();
-  //             // String token=await prefs.getString('token').toString();
+          //                InkWell(
+          //           onTap: () async{
+          //             // SharedPreferences prefs=await SharedPreferences.getInstance();
+          //             // String token=await prefs.getString('token').toString();
 
-  //            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Going to Login Without Clearing Preferences')));
-  //         //  prefs.clear();
-  // Timer(
-  //   Duration(seconds: 1), () {
-  // Navigator.of(context).pushReplacement(
-  //   MaterialPageRoute(builder:(context)=>LoginScreen()));
-  //   }
-  //   );     
-           
-  //           },
-  //           child: ListTile(
-  //             title: Text('Go to Login'),
-  //             leading: Icon(Icons.verified_user),
-  //           ),
-  //         ),
+          //            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Going to Login Without Clearing Preferences')));
+          //         //  prefs.clear();
+          // Timer(
+          //   Duration(seconds: 1), () {
+          // Navigator.of(context).pushReplacement(
+          //   MaterialPageRoute(builder:(context)=>LoginScreen()));
+          //   }
+          //   );
 
-
+          //           },
+          //           child: ListTile(
+          //             title: Text('Go to Login'),
+          //             leading: Icon(Icons.verified_user),
+          //           ),
+          //         ),
         ],
       ),
     );

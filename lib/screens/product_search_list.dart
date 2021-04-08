@@ -10,23 +10,26 @@ import 'dart:convert';
 import 'package:shopvia/screens/DrawerContent_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-Future getList(String query,String sorting) async {
+Future getList(String query, String sorting) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token').toString();
   Response response;
-  if (sorting==null)
-  {
-     response = await http.get(
-      API_URL + ':' + PORT + '/api/products/?q=' + query,
-      headers: {HttpHeaders.authorizationHeader: "Token " + token});
+  if (sorting == null) {
+    response = await http.get(
+        Uri.parse(API_URL + ':' + PORT + '/api/products/?q=' + query),
+        headers: {HttpHeaders.authorizationHeader: "Token " + token});
+  } else {
+    response = await http.get(
+        Uri.parse(API_URL +
+            ':' +
+            PORT +
+            '/api/products/?q=' +
+            query +
+            '&&s=' +
+            sorting),
+        headers: {HttpHeaders.authorizationHeader: "Token " + token});
   }
-  else
-  {
-     response = await http.get(
-      API_URL + ':' + PORT + '/api/products/?q=' + query+'&&s='+sorting,
-      headers: {HttpHeaders.authorizationHeader: "Token " + token});
-  }
-    if (response.statusCode == 200) {
+  if (response.statusCode == 200) {
     print(json.decode(response.body));
     return (json.decode(response.body));
   } else {
@@ -50,7 +53,7 @@ class _ProductListState extends State<ProductList> {
   //this runs and initializes Product List by running getList (calling API)
   void initState() {
     super.initState();
-    futureProducts = getList(this.query,null);
+    futureProducts = getList(this.query, null);
 
     // futureProducts = getList(this.query,null);
   }
@@ -67,88 +70,95 @@ class _ProductListState extends State<ProductList> {
           title: Text('Product List'),
           actions: [
             Builder(
-        builder: (BuildContext context) {
-          return 
-          // IconButton(
-          //   icon: const Icon(Icons.message),
-          //   onPressed: () {
-          //     final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
-          //     Scaffold.of(context).showSnackBar(snackBar);
-          //   },
-          // );
-          DropdownButton<String>(
-              value: dropdownValue,
-              onChanged: (String newValue) {
-                setState(() {
-                  dropdownValue = newValue;
+              builder: (BuildContext context) {
+                return
+                    // IconButton(
+                    //   icon: const Icon(Icons.message),
+                    //   onPressed: () {
+                    //     final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
+                    //     Scaffold.of(context).showSnackBar(snackBar);
+                    //   },
+                    // );
+                    DropdownButton<String>(
+                  value: dropdownValue,
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
 
-                switch(dropdownValue)
-                {
-                  case "Name Ascending":
-                  
-                  print("Sorting By Name A-Z");
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Sorting By Name Alphabetically A-Z')));
-                  setState(() {
-                    futureProducts=getList(query,"nameasc");
-                  });
-                 Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done Sorting.. Refreshing UI')));
-                 break;
-                  case "Name Descending":                  
-                  print("Sorting By Name Z-A");
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Sorting By Name Alphabetically Z-A')));
-                  setState(() {
-                    futureProducts=getList(query,"namedesc");
-                  
-                  });
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done Sorting.. Refreshing UI')));
-                  break;
-                  case "Price Ascending":
-                  print("Sorting By Price Low to High");
-                   Scaffold.of(context).showSnackBar(SnackBar(content: Text('Sorting By Price Low to High')));
-                   setState(() {
-                    futureProducts=getList(query,"priceasc");
-                  });
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done Sorting.. Refreshing UI')));
-                 break;
-                  case "Price Descending":
-                  
-                  print("Sorting By Price High to Low");
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Sorting By Price High to Low')));
-                  setState(() {
-                    futureProducts=getList(query,"pricedesc");
-                  });
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done Sorting.. Refreshing UI')));
-                  
-                  break;
-                  default:
-                  print("Default Sorting");
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Default Sorting')));
-                  setState(() {
-                    futureProducts=getList(query,null);
-                  });
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done Sorting.. Refreshing UI')));
-                }
-                });
-              //  print(dropdownValue);
-              //  print(query);
+                      switch (dropdownValue) {
+                        case "Name Ascending":
+                          print("Sorting By Name A-Z");
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text('Sorting By Name Alphabetically A-Z')));
+                          setState(() {
+                            futureProducts = getList(query, "nameasc");
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Done Sorting.. Refreshing UI')));
+                          break;
+                        case "Name Descending":
+                          print("Sorting By Name Z-A");
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text('Sorting By Name Alphabetically Z-A')));
+                          setState(() {
+                            futureProducts = getList(query, "namedesc");
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Done Sorting.. Refreshing UI')));
+                          break;
+                        case "Price Ascending":
+                          print("Sorting By Price Low to High");
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Sorting By Price Low to High')));
+                          setState(() {
+                            futureProducts = getList(query, "priceasc");
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Done Sorting.. Refreshing UI')));
+                          break;
+                        case "Price Descending":
+                          print("Sorting By Price High to Low");
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Sorting By Price High to Low')));
+                          setState(() {
+                            futureProducts = getList(query, "pricedesc");
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Done Sorting.. Refreshing UI')));
 
-               },
-              items: <String>[
-                'Default',
-                'Name Ascending',
-                'Price Ascending',
-                'Name Descending',
-                'Price Descending'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
+                          break;
+                        default:
+                          print("Default Sorting");
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Default Sorting')));
+                          setState(() {
+                            futureProducts = getList(query, null);
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Done Sorting.. Refreshing UI')));
+                      }
+                    });
+                    //  print(dropdownValue);
+                    //  print(query);
+                  },
+                  items: <String>[
+                    'Default',
+                    'Name Ascending',
+                    'Price Ascending',
+                    'Name Descending',
+                    'Price Descending'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 );
-              }).toList(),
-            );
-        },
-      ),
-            
+              },
+            ),
+
             // DropdownButton<String>(
             //   value: dropdownValue,
             //   onChanged: (String newValue) {
@@ -158,13 +168,13 @@ class _ProductListState extends State<ProductList> {
             //     switch(dropdownValue)
             //     {
             //       case "Name Ascending":
-                  
+
             //       print("Sorting By Name A-Z");
             //       setState(() {
             //         futureProducts=getList(query,"nameasc");
             //       });
             //      break;
-            //       case "Name Descending":                  
+            //       case "Name Descending":
             //       print("Sorting By Name Z-A");
             //       setState(() {
             //         futureProducts=getList(query,"namedesc");
@@ -177,7 +187,7 @@ class _ProductListState extends State<ProductList> {
             //       });
             //      break;
             //       case "Price Descending":
-                  
+
             //       print("Sorting By Price High to Low");
             //       // Scaffold.of(context).showSnackBar(SnackBar(content: Text('Sorting By Price High to Low')));
             //       setState(() {
@@ -186,7 +196,7 @@ class _ProductListState extends State<ProductList> {
             //       break;
             //       default:
             //       print("Default Sorting");
-                  
+
             //     }
             //     });
             //   //  print(dropdownValue);
@@ -206,10 +216,6 @@ class _ProductListState extends State<ProductList> {
             //     );
             //   }).toList(),
             // ),
-
-
-
-
           ],
         ),
         drawer: Drawercontent(),
@@ -282,6 +288,7 @@ class _ProductListState extends State<ProductList> {
                                     ),
                                   ],
                                 ),
+                                // ignore: deprecated_member_use
                                 trailing: FlatButton(
                                     color: Colors.teal,
                                     child: Text(
